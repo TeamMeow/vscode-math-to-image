@@ -1,0 +1,24 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+  branches:
+    include:
+    - master
+  tags:
+    include:
+    - refs/tags/v*
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- bash: |
+    echo ">>> Publish"
+    yarn deploy
+  displayName: Publish
+  condition: and(succeeded(), startsWith(variables['Build.SourceBranch'], 'refs/tags/'), eq(variables['Agent.OS'], 'Linux'))
+  env:
+    VSCE_PAT: $(VSCE_PAT)

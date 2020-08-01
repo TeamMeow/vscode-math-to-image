@@ -1,6 +1,15 @@
-# VS Code LaTeX in README
+<div align="center">
 
-> 📐 Rendering LaTeX in GitHub READMEs (and other places that don't support LaTeX in markdown).
+<h1>Math » Image</h1>
+
+📐 <em>We can help you render LaTeX math equations in any Markdown file! </em>
+
+![](https://img.shields.io/badge/VS%20Marketplace-demo%20badge-0066b8?logo=visual-studio)
+![](https://img.shields.io/badge/GitHub-demo%20badge-black?logo=github)
+
+</div>
+
+`vscode-math-to-image` is a VS Code extension that converts a standard math equation like `$E=mc^2$` to a image like <img src="https://render.githubusercontent.com/render/math?math=E%3Dmc%5E2"> (remote) or (local) that can be viewed inside websites that doesn't support rendering LaTeX yet. (Take GitHub READMEs for example.)
 
 ## Demo
 
@@ -8,37 +17,13 @@ See [examples](examples/example.md) for more.
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+TODO
 
-For example if there is an image subfolder under your extension project workspace:
+## Extension Settings
 
-\!\[feature X\]\(images/feature-x.png\)
+TODO
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
-
-## Requirements
-
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
-
-<!-- ## Extension Settings
-
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
-This extension contributes the following settings:
+<!-- This extension contributes the following settings:
 
 * `myExtension.enable`: enable/disable this extension
-* `myExtension.thing`: set to `blah` to do something
-
-## Known Issues
-
-Calling out known issues can help limit users opening duplicate issues against your extension.
-
-## Release Notes
-
-Users appreciate release notes as you update your extension.
-
-### 1.0.0
-
-Initial release of ... -->
+* `myExtension.thing`: set to `blah` to do something -->

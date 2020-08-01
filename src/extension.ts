@@ -23,8 +23,8 @@ export function activate(context: vscode.ExtensionContext) {
     const selectionStart = editor?.selection.start
     const selectionEnd = editor?.selection.end
 
-    const inline = selectionStart?.line === selectionEnd?.line ? true : false
-    console.log(selection, inline)
+    // const inline = selectionStart?.line === selectionEnd?.line ? true : false
+    // console.log(selection, inline)
 
     if (selection === undefined || selectionStart === undefined || selectionEnd === undefined) {
       vscode.window.showErrorMessage('❗ Nothing selected!')
@@ -34,17 +34,17 @@ export function activate(context: vscode.ExtensionContext) {
 
       // Enter rendered <img> into editor (and commenting out original equation)
       if (displayMath.test(selection)) {
+        // Remove leading $$ and trailing $$
         const equation = selection.split('\n').slice(1, -1).join('\n')
-        console.log('Display math!', equation)
-
         const renderedImage = renderEquation(equation)
+
         editor?.edit(editBuilder => {
           editBuilder.insert(selectionStart, '<!-- ')
           editBuilder.insert(selectionEnd, ` -->\n\n<div align="center">${renderedImage}</div>`)
         })
         vscode.window.showInformationMessage(`📐 Rendered equation: ${selection}!`)
       } else if (inlineMath.test(selection)) {
-        console.log('Inline math!')
+        // Remove leading $ and trailing $
         const equation = selection.slice(1, -1).trim()
         const renderedImage = renderEquation(equation)
 

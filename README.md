@@ -9,9 +9,11 @@
 
 </div>
 
-`vscode-math-to-image` is a VS Code extension that converts a standard math equation like `$E=mc^2$` to a image like <img src="https://render.githubusercontent.com/render/math?math=E%3Dmc%5E2"> (remote) or (local) that can be viewed inside websites that doesn't support rendering LaTeX yet. (Take GitHub READMEs for example.)
+`vscode-math-to-image` is a VS Code extension that can help you convert a standard LaTeX math equation like `$E=mc^2$` to a image like <img src="https://render.githubusercontent.com/render/math?math=E%3Dmc%5E2"> (remote) or <!-- TODO: a local SVG equation --> (local) that can be embedded inside Markdown files or websites that doesn't support rendering LaTeX yet (for example: GitHub README). Take a look this [README source file](https://raw.githubusercontent.com/TeamMeow/vscode-math-to-image/master/README.md)!
 
 ## Demo
+
+TODO (GIF)
 
 See [examples](examples/example.md) for more.
 
@@ -27,3 +29,11 @@ TODO
 
 * `myExtension.enable`: enable/disable this extension
 * `myExtension.thing`: set to `blah` to do something -->
+
+---
+
+📐 **vscode-math-to-image** © TeamMeow. Released under the MIT License.
+
+Authored and maintained by TeamMeow members.
+
+[@GitHub](https://github.com/TeamMeow) · [@Members](https://github.com/orgs/TeamMeow/people?type=source)

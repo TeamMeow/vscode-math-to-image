@@ -21,6 +21,11 @@ steps:
   displayName: 'Install Node.js'
 
 - bash: |
+    echo ">>> Compile extension"
+    yarn && yarn vscode:prepublish
+  displayName: Compile extension
+
+- bash: |
     echo ">>> Publish"
     yarn deploy
   displayName: Publish

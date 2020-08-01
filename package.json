@@ -1,7 +1,7 @@
 {
   "name": "vscode-math-to-image",
-  "displayName": "vscode-math-to-image",
-  "description": "Render LaTeX math equations in any Markdown file",
+  "displayName": "Math to Image",
+  "description": "📐 Render LaTeX math equations in any Markdown file",
   "license": "MIT",
   "version": "0.0.1",
   "engines": {
@@ -10,6 +10,19 @@
   "categories": [
     "Other"
   ],
+  "icon": "assets/vscode-math-to-image.png",
+  "galleryBanner": {
+    "color": "#2b3838",
+    "theme": "dark"
+  },
+  "homepage": "https://github.com/TeamMeow/vscode-math-to-image",
+  "bugs": {
+    "url": "https://github.com/TeamMeow/vscode-math-to-image/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TeamMeow/vscode-math-to-image"
+  },
   "activationEvents": [
     "onCommand:vscode-math-to-image.render-selection"
   ],

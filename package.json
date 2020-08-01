@@ -18,9 +18,18 @@
     "commands": [
       {
         "command": "vscode-latex-in-readme.render-selection",
-        "title": "LaTeX in README: Render selected equation"
+        "title": "LaTeX in README: Insert rendered selection equation"
       }
-    ]
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "vscode-latex-in-readme.render-selection",
+          "when": "resourceLangId == markdown && editorFocus && editorHasSelection",
+          "group": "modification"
+        }
+      ]
+    }
   },
   "scripts": {
     "vscode:prepublish": "yarn run compile",

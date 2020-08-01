@@ -1,8 +1,10 @@
 # VS Code LaTeX in README
 
-> Rendering LaTeX in GitHub READMEs. (The official way!)
+> 📐 Rendering LaTeX in GitHub READMEs (and other places that don't support LaTeX in markdown).
 
-This is the README for your extension "vscode-latex-in-readme". After writing up a brief description, we recommend including the following sections.
+## Demo
+
+See [examples](examples/example.md) for more.
 
 ## Features
 
@@ -16,7 +18,7 @@ For example if there is an image subfolder under your extension project workspac
 
 ## Requirements
 
-<!-- If you have any requirements or dependencies, add a section describing those and how to install and configure them. -->
+If you have any requirements or dependencies, add a section describing those and how to install and configure them.
 
 <!-- ## Extension Settings
 

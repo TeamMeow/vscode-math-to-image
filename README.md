@@ -41,7 +41,7 @@ TODO
 
 ---
 
-📐 **vscode-math-to-image** © TeamMeow. Released under the MIT License.
+📐 **Math » Image** © TeamMeow. Released under the MIT License.
 
 Authored and maintained by TeamMeow members.
 

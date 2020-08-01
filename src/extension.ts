@@ -15,9 +15,9 @@ function renderEquation(equation: string) {
 }
 
 export function activate(context: vscode.ExtensionContext) {
-  // console.log('Congratulations, your extension "vscode-latex-in-readme" is now active!')
+  // console.log('Congratulations, your extension "vscode-math-to-image" is now active!')
 
-  let disposable = vscode.commands.registerCommand('vscode-latex-in-readme.render-selection', () => {
+  let disposable = vscode.commands.registerCommand('vscode-math-to-image.render-selection', () => {
     // Get selection text
     const selection = editor?.document.getText(editor.selection)
     const selectionStart = editor?.selection.start

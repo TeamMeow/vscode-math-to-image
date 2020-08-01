@@ -1,4 +1,4 @@
-<h1>Example <code>vscode-latex-in-readme</code> rendering</h1>
+<h1>Example <code>vscode-math-to-image</code> rendering</h1>
 
 - [Native markdown](#native-markdown)
   - [Display math](#display-math)

@@ -1,7 +1,7 @@
 {
-  "name": "vscode-latex-in-readme",
-  "displayName": "vscode-latex-in-readme",
-  "description": "Rendering LaTeX in GitHub READMEs!",
+  "name": "vscode-math-to-image",
+  "displayName": "vscode-math-to-image",
+  "description": "Render LaTeX math equations in any Markdown file",
   "license": "MIT",
   "version": "0.0.1",
   "engines": {
@@ -11,20 +11,20 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:vscode-latex-in-readme.render-selection"
+    "onCommand:vscode-math-to-image.render-selection"
   ],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "vscode-latex-in-readme.render-selection",
-        "title": "LaTeX in README: Insert rendered selection equation"
+        "command": "vscode-math-to-image.render-selection",
+        "title": "Math » Image: Insert rendered equation (remote)"
       }
     ],
     "menus": {
       "editor/context": [
         {
-          "command": "vscode-latex-in-readme.render-selection",
+          "command": "vscode-math-to-image.render-selection",
           "when": "resourceLangId == markdown && editorFocus && editorHasSelection",
           "group": "modification"
         }

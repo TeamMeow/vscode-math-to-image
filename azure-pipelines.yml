@@ -15,6 +15,11 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
+- task: NodeTool@0
+  inputs:
+    versionSpec: '12.x'
+  displayName: 'Install Node.js'
+
 - bash: |
     echo ">>> Publish"
     yarn deploy

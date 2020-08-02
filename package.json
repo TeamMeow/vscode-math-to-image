@@ -3,7 +3,7 @@
   "displayName": "Math to Image",
   "description": "📐 Render LaTeX math equations in any Markdown file",
   "license": "MIT",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "publisher": "MeowTeam",
   "engines": {
     "vscode": "^1.47.0"

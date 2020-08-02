@@ -7,10 +7,9 @@
 📐 <em>We can help you render LaTeX math equations in any Markdown file! </em>
 
 [![Azure DevOps builds (branch)](https://img.shields.io/azure-devops/build/MeowTeam/9f842be1-8208-4cb2-ab10-228d34a2c525/1/master?color=578a8a&label=azure%20pipelines&logo=azure-pipelines)](https://dev.azure.com/MeowTeam/vscode-math-to-image/_build/latest?definitionId=1&branchName=master)
-[![Visual Studio Marketplace](https://img.shields.io/badge/available%20on-vs%20marketplace-db8465?logo=visual-studio)](https://marketplace.visualstudio.com/items?itemName=MeowTeam.vscode-math-to-image)
+[![Visual Studio Marketplace](https://img.shields.io/visual-studio-marketplace/v/MeowTeam.vscode-math-to-image?color=db8465&label=vs%20marketplace&logo=visual-studio)](https://marketplace.visualstudio.com/items?itemName=MeowTeam.vscode-math-to-image)
 ![Visual Studio Marketplace Downloads](https://img.shields.io/visual-studio-marketplace/d/MeowTeam.vscode-math-to-image?label=downloads&color=82a0ba)
 ![Visual Studio Marketplace Rating (Stars)](https://img.shields.io/visual-studio-marketplace/stars/MeowTeam.vscode-math-to-image?color=fab95b)
-<!-- ![Visual Studio Marketplace Version](https://img.shields.io/visual-studio-marketplace/v/MeowTeam.vscode-math-to-image?color=0066b8&label=VS%20Marketplace&logo=visual-studio) -->
 
 </div>
 

@@ -70,10 +70,6 @@ $$
 
 To a local SVG like: `svg/e40qQ5G9jw.svg`, which will be saved to a dedicate folder called `svg`, and sourced inside the Markdown file that requires math-embedding.
 
-```html
-<div align="center"><img src="svg/e40qQ5G9jw.svg"/></div>
-```
-
 > 🌸 NOTE: There used to be a demo SVG here, but Visual Studio Marketplace won't allow us to add local SVGs inside their README.
 
 If you are reading this on GitHub, you can see that both of these methods work when we need to add math equations to READMEs or other Markdown files on GitHub.

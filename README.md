@@ -6,11 +6,11 @@
 
 📐 <em>We can help you render LaTeX math equations in any Markdown file! </em>
 
-[![Visual Studio Marketplace](https://img.shields.io/badge/Available%20on-VS%20Marketplace-0066b8?logo=visual-studio)](https://marketplace.visualstudio.com/items?itemName=MeowTeam.vscode-math-to-image)
-[![Azure DevOps builds (branch)](https://img.shields.io/azure-devops/build/MeowTeam/9f842be1-8208-4cb2-ab10-228d34a2c525/1/master?color=2560E0&label=Azure%20Pipelines&logo=azure-pipelines)](https://dev.azure.com/MeowTeam/vscode-math-to-image/_build/latest?definitionId=1&branchName=master)
+[![Azure DevOps builds (branch)](https://img.shields.io/azure-devops/build/MeowTeam/9f842be1-8208-4cb2-ab10-228d34a2c525/1/master?color=578a8a&label=azure%20pipelines&logo=azure-pipelines)](https://dev.azure.com/MeowTeam/vscode-math-to-image/_build/latest?definitionId=1&branchName=master)
+[![Visual Studio Marketplace](https://img.shields.io/badge/available%20on-vs%20marketplace-db8465?logo=visual-studio)](https://marketplace.visualstudio.com/items?itemName=MeowTeam.vscode-math-to-image)
+![Visual Studio Marketplace Downloads](https://img.shields.io/visual-studio-marketplace/d/MeowTeam.vscode-math-to-image?label=downloads&color=82a0ba)
+![Visual Studio Marketplace Rating (Stars)](https://img.shields.io/visual-studio-marketplace/stars/MeowTeam.vscode-math-to-image&color=fab95b)
 <!-- ![Visual Studio Marketplace Version](https://img.shields.io/visual-studio-marketplace/v/MeowTeam.vscode-math-to-image?color=0066b8&label=VS%20Marketplace&logo=visual-studio) -->
-<!-- ![Visual Studio Marketplace Downloads](https://img.shields.io/visual-studio-marketplace/d/MeowTeam.vscode-math-to-image?label=downloads) -->
-<!-- ![Visual Studio Marketplace Rating (Stars)](https://img.shields.io/visual-studio-marketplace/stars/MeowTeam.vscode-math-to-image) -->
 
 </div>
 
@@ -23,6 +23,7 @@ This is a VS Code extension to help you convert a standard LaTeX math equation l
   - [Rendering remotely](#rendering-remotely)
   - [Rendering locally](#rendering-locally)
 - [Extension Settings](#extension-settings)
+- [Change Log](#change-log)
 
 ## Demo
 
@@ -41,7 +42,7 @@ This is actually a hack. GitHub won't render LaTeX equations inside normal place
 
 Basically we can convert a standard LaTeX math equation like the *Gaussian Normal Distribution*...
 
-```
+```latex
 $$
 P(x) = \frac{1}{\sigma\sqrt{2\pi}} e^{\frac{-(x-\mu)^2}{2\sigma^2}}
 $$
@@ -49,7 +50,7 @@ $$
 
 ... to a rendered image tag with the help of GitHub's math rendering server:
 
-```
+```html
 <div align="center"><img src="https://render.githubusercontent.com/render/math?math=P(x)%20%3D%20%5Cfrac%7B1%7D%7B%5Csigma%5Csqrt%7B2%5Cpi%7D%7D%20e%5E%7B%5Cfrac%7B-(x-%5Cmu)%5E2%7D%7B2%5Csigma%5E2%7D%7D%0D"></div>
 ```
 
@@ -61,7 +62,7 @@ Not everywhere accept external SVGs. To circumvent this type of scenario, we can
 
 We can convert the same LaTeX math equation:
 
-```
+```latex
 $$
 P(x) = \frac{1}{\sigma\sqrt{2\pi}} e^{\frac{-(x-\mu)^2}{2\sigma^2}}
 $$
@@ -69,7 +70,7 @@ $$
 
 To a local SVG like: `svg/e40qQ5G9jw.svg`, which will be saved to a dedicate folder called `svg`, and sourced inside the Markdown file that requires math-embedding.
 
-```
+```html
 <div align="center"><img src="svg/e40qQ5G9jw.svg"/></div>
 ```
 
@@ -83,9 +84,13 @@ See [examples](examples/example.md) for more math equation rendering scenarios, 
 
 You can specify the path to save the locally rendered SVG image. The settings are self-explanatory.
 
-* `vscode-math-to-image.svgSavePath`:
+* **vscode-math-to-image.svgSavePath**:
   * Generated SVG files will be put in a folder which is in current file's folder.
   * Generated SVG files will be put in a folder which is in current workspace folder.
+
+## Change Log
+
+For version updates and bug fixes, please see: [CHANGELOG](CHANGELOG.md).
 
 ---
 
@@ -93,4 +98,4 @@ You can specify the path to save the locally rendered SVG image. The settings ar
 
 Authored and maintained by TeamMeow members.
 
-[@GitHub](https://github.com/TeamMeow) · [@Members](https://github.com/orgs/TeamMeow/people?type=source)
+[@GitHub](https://github.com/TeamMeow) · [@Members](https://github.com/orgs/TeamMeow/people?type=source) · []()

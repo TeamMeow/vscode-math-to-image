@@ -59,14 +59,14 @@
       "properties": {
         "vscode-math-to-image.svgSavePath": {
           "type": "string",
-          "default": "workspace folder",
+          "default": "Current workspace directory",
           "enum": [
-            ".",
-            "workspace folder"
+            "Current file directory",
+            "Current workspace directory"
           ],
           "enumDescriptions": [
-            "Generated SVG files will be put in a folder which is in current file's folder",
-            "Generated SVG files will be put in a folder which is in current workspace folder"
+            "Generated SVG files will be put in a folder under current file's directory.",
+            "Generated SVG files will be put in a folder under current workspace directory."
           ]
         }
       }

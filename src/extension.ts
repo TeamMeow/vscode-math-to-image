@@ -30,7 +30,7 @@ function getSVGPath(fileName: string) {
   let folderPath = ''
   let current: any = editor?.document.uri.fsPath
 
-  if (p == '.') {
+  if (p == 'Current file directory') {
     folderPath = path.dirname(current)
   } else {
     folderPath = vscode.workspace.workspaceFolders ? vscode.workspace.workspaceFolders[0].uri.fsPath : ''

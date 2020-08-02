@@ -81,8 +81,8 @@ See [examples](examples/example.md) for more math equation rendering scenarios, 
 You can specify the path to save the locally rendered SVG image. The settings are self-explanatory.
 
 * **vscode-math-to-image.svgSavePath**:
-  * Generated SVG files will be put in a folder which is in current file's folder.
-  * Generated SVG files will be put in a folder which is in current workspace folder.
+  * `Current file directory`: Generated SVG files will be put in a folder under current file's directory.
+  * `Current workspace directory`: Generated SVG files will be put in a folder under current workspace directory.
 
 ## Change Log
 

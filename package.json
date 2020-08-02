@@ -55,16 +55,19 @@
       ]
     },
     "configuration": {
-			"title": "vscode-math-to-image",
-			"properties": {
-				"vscode-math-to-image.svgSavePath": {
-					"type":"string",
-					"default": "workspace folder",
-					"enum": [".", "workspace folder"],
-					"enumDescriptions": [
-						"Generated svg files will be put in a folder which is in current file's folder",
-						"Generated svg files will be put in a folder which is in workspace folder"
-					]
+      "title": "vscode-math-to-image",
+      "properties": {
+        "vscode-math-to-image.svgSavePath": {
+          "type": "string",
+          "default": "workspace folder",
+          "enum": [
+            ".",
+            "workspace folder"
+          ],
+          "enumDescriptions": [
+            "Generated SVG files will be put in a folder which is in current file's folder",
+            "Generated SVG files will be put in a folder which is in current workspace folder"
+          ]
         }
       }
     }

@@ -6,6 +6,9 @@
 - [GitHub LaTeX image](#github-latex-image)
   - [Display math](#display-math-1)
   - [Inline equation](#inline-equation-1)
+- [Local SVG](#local-svg)
+  - [Display math](#display-math-2)
+  - [Inline equation](#inline-equation-2)
 
 ## Native markdown
 
@@ -15,7 +18,9 @@
 
 Equation:
 
-$$\ell = \sum_{i}^{N}(y_i - \hat{y}_i)^2 - ||w||_2^2$$
+$$
+\ell = \sum_{i}^{N}(y_i - \hat{y}_i)^2 - ||w||_2^2
+$$
 
 Aligned environment:
 
@@ -31,6 +36,8 @@ $$
 In physics, the mass-energy equivalence is stated by the equation $E=mc^2$, discovered in 1905 by Albert Einstein.
 
 ## GitHub LaTeX image
+
+🛠 Command: `Math » Image: Insert rendered equation (remote)`.
 
 > Equations in this section **WILL** be rendered as they have been converted to images (by this extension!) which are rendered with GitHub's official Jupyter Notebook rendering engine. This hack is provided here: [A hack for showing LaTeX formulas in GitHub markdown](https://gist.github.com/a-rodin/fef3f543412d6e1ec5b6cf55bf197d7b).
 
@@ -58,3 +65,32 @@ $$ -->
 ### Inline equation
 
 In physics, the mass-energy equivalence is stated by the equation <!-- $E=mc^2$ --> <img src="https://render.githubusercontent.com/render/math?math=E%3Dmc%5E2">, discovered in 1905 by Albert Einstein.
+
+## Local SVG
+
+🛠 Command: `Math » Image: Insert rendered equation (local)`.
+
+> Equations in this section **WILL** be rendered with MathJax to an SVG, and will be saved to a local folder. Then we will source the SVG's path to your Markdown file, and thus rendering the image.
+
+### Display math
+
+Equation:
+
+<!-- $$
+\ell = \sum_{i}^{N}(y_i - \hat{y}_i)^2 - ||w||_2^2
+$$ -->
+<div align="center"><img src="svg\XVkMmUd615.svg"/></div>
+
+Aligned environment:
+
+<!-- $$
+\begin{aligned}
+  f &= 2 + x + 3 \\
+    &= 5 + x
+\end{aligned}
+$$ -->
+<div align="center"><img src="svg\E5IItKa473.svg"/></div>
+
+### Inline equation
+
+In physics, the mass-energy equivalence is stated by the equation <!-- $E=mc^2$ --> <img style="transform: translateY(0.25em);" src="svg\FPTqIMHqAZ.svg"/>, discovered in 1905 by Albert Einstein.

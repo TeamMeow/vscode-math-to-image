@@ -98,4 +98,4 @@ For version updates and bug fixes, please see: [CHANGELOG](CHANGELOG.md).
 
 Authored and maintained by TeamMeow members.
 
-[@GitHub](https://github.com/TeamMeow) · [@Members](https://github.com/orgs/TeamMeow/people?type=source) · []()
+> 🦁 We build things that go "meow" · [@GitHub](https://github.com/TeamMeow) · [@Members](https://github.com/orgs/TeamMeow/people?type=source)

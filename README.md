@@ -14,7 +14,7 @@
 
 </div>
 
-This is a VS Code extension to help you convert a standard LaTeX math equation like `$E=mc^2$` to an image like <img src="https://render.githubusercontent.com/render/math?math=E%3Dmc%5E2"> (remote) or <img style="transform: translateY(0.25em);" src="examples/svg/FPTqIMHqAZ.svg"/> (local) that can be embedded inside Markdown files or websites that doesn't support rendering LaTeX yet. ~~(That's you GitHub!)~~
+This is a VS Code extension to help you convert a standard LaTeX math equation like `$E=mc^2$` to an image like <img src="https://render.githubusercontent.com/render/math?math=E%3Dmc%5E2"> (remote) or a local SVG which can be embedded inside Markdown files or websites that doesn't support rendering LaTeX yet. ~~(That's you GitHub!)~~
 
 <h2>Table of Contents</h2>
 
@@ -74,7 +74,7 @@ To a local SVG like: `svg/e40qQ5G9jw.svg`, which will be saved to a dedicate fol
 <div align="center"><img src="svg/e40qQ5G9jw.svg"/></div>
 ```
 
-<div align="center"><img src="examples/svg/e40qQ5G9jw.svg"/></div>
+> 🌸 NOTE: There used to be a demo SVG here, but Visual Studio Marketplace won't allow us to add local SVGs inside their README.
 
 If you are reading this on GitHub, you can see that both of these methods work when we need to add math equations to READMEs or other Markdown files on GitHub.
 

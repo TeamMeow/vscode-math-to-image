@@ -3,6 +3,7 @@
 out/test/**
 src/**
 examples/**
+node_modules/**
 
 **/tsconfig.json
 **/.eslintrc.json
@@ -15,3 +16,4 @@ azure-pipelines.yml
 CHANGELOG.md
 LICENSE
 README.md
+webpack.config.js

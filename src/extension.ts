@@ -30,7 +30,7 @@ function getSVGPath(fileName: string) {
   let folderPath = ''
   let current: any = editor?.document.uri.fsPath
 
-  if (p == 'Current file directory') {
+  if (p === 'Current file directory') {
     folderPath = path.dirname(current)
   } else {
     folderPath = vscode.workspace.workspaceFolders ? vscode.workspace.workspaceFolders[0].uri.fsPath : ''
@@ -48,16 +48,21 @@ function getSVGPath(fileName: string) {
 function writeSVGFile(filePath: string, fileContent: string) {
   if (!fs.existsSync(path.dirname(filePath))) {
     fs.mkdir(path.dirname(filePath), { recursive: true }, (err: any) => {
-      if (err) console.log('[err] system error: create svg folder failed')
-      else {
+      if (err) {
+        console.log('[err] system error: create svg folder failed')
+      } else {
         fs.writeFile(filePath, fileContent, (err: any) => {
-          if (err) console.log('[err] system error: create svg file failed')
+          if (err) {
+            console.log('[err] system error: create svg file failed')
+          }
         })
       }
     })
   } else {
     fs.writeFile(filePath, fileContent, (err: any) => {
-      if (err) console.log('[err] system error: create svg file failed2')
+      if (err) {
+        console.log('[err] system error: create svg file failed2')
+      }
     })
   }
 }
@@ -71,7 +76,7 @@ function renderEquationRemote(equation: string, mathType: MathType) {
   const renderAPIUrl = 'https://render.githubusercontent.com/render/math?math='
   const encodedMath = encodeURIComponent(equation)
 
-  if (mathType == MathType.DISPLAY) {
+  if (mathType === MathType.DISPLAY) {
     return `\n\n<div align="center"><img src="${renderAPIUrl}${encodedMath}"></div>`
   } else {
     return `<img src="${renderAPIUrl}${encodedMath}">`
@@ -94,8 +99,11 @@ function renderEquationLocal(equation: string, mathType: MathType) {
           svg: true, // or svg:true, or html:true
         },
         function (data: any) {
-          if (data.errors) reject(data.errors)
-          else resolve(data.svg.replace(/\n/g, ''))
+          if (data.errors) {
+            reject(data.errors)
+          } else {
+            resolve(data.svg.replace(/\n/g, ''))
+          }
         }
       )
     )
@@ -104,14 +112,16 @@ function renderEquationLocal(equation: string, mathType: MathType) {
   let fname =
     (function (n: number): string {
       let a = []
-      for (let i = 0; i < n; i++) a.push(digits[Math.floor(Math.random() * digits_len)])
+      for (let i = 0; i < n; i++) {
+        a.push(digits[Math.floor(Math.random() * digits_len)])
+      }
       return a.join('')
     })(10) + '.svg'
   let svgPath = getSVGPath(fname)
   let docPath: any = editor?.document.uri.fsPath
   let rp = path.relative(path.dirname(docPath), svgPath)
 
-  mathToSVG(equation, mathType == MathType.DISPLAY ? 'TeX' : 'inline-TeX')
+  mathToSVG(equation, mathType === MathType.DISPLAY ? 'TeX' : 'inline-TeX')
     .then((res: any) => {
       writeSVGFile(svgPath, res)
     })
@@ -119,7 +129,7 @@ function renderEquationLocal(equation: string, mathType: MathType) {
       vscode.window.showErrorMessage('[err]: ' + err)
     })
 
-  if (mathType == MathType.INLINE) {
+  if (mathType === MathType.INLINE) {
     return `<img style="transform: translateY(0.25em);" src="${rp}"/>`
   } else {
     return `\n\n<div align="center"><img src="${rp}"/></div>`
@@ -165,7 +175,7 @@ function renderEntry(renderType: RenderType) {
       const equation = selection.split('\n').slice(1, -1).join('\n')
 
       let renderedImage =
-        renderType == RenderType.REMOTE
+        renderType === RenderType.REMOTE
           ? renderEquationRemote(equation, MathType.DISPLAY)
           : renderEquationLocal(equation, MathType.DISPLAY)
       insertMathImage(renderedImage, selectionStart, selectionEnd)
@@ -174,7 +184,7 @@ function renderEntry(renderType: RenderType) {
       const equation = selection.slice(1, -1).trim()
 
       let renderedImage =
-        renderType == RenderType.REMOTE
+        renderType === RenderType.REMOTE
           ? renderEquationRemote(equation, MathType.INLINE)
           : renderEquationLocal(equation, MathType.INLINE)
       insertMathImage(renderedImage, selectionStart, selectionEnd)

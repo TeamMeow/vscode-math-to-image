@@ -15,8 +15,9 @@
 
 This is a VS Code extension to help you convert a standard LaTeX math equation like `$E=mc^2$` to an image like <img src="https://render.githubusercontent.com/render/math?math=E%3Dmc%5E2"> (remote) or a local SVG which can be embedded inside Markdown files or websites that doesn't support rendering LaTeX yet. ~~(That's you GitHub!)~~
 
-> Read more about _Math to Image_ here:
-> - [VS Code Math to Image: Write LaTeX Math Equations in GitHub Markdown the Easy Way!](https://medium.com/spencerweekly/vs-code-math-to-image-write-latex-math-equations-in-github-markdown-the-easy-way-9fa8b81dc910?source=friends_link&sk=cff035b443fb81f5b20a47370f23aed3).
+Read more about _Math to Image_ here:
+- <a href="https://sm.ms/image/sErtzjdBYkR71pc" target="_blank"><img src="https://i.loli.net/2020/08/04/sErtzjdBYkR71pc.png" height="18px" ></a> **少数派：**[不支持 LaTeX 也能插入数学公式，这个小插件帮你实现「徒手渲染」](https://sspai.com/post/61877)。
+- <a href="https://sm.ms/image/NQiuDlbxYeJBa1w" target="_blank"><img src="https://i.loli.net/2020/08/04/NQiuDlbxYeJBa1w.png" height="18px" ></a> **Medium:** [VS Code Math to Image: Write LaTeX Math Equations in GitHub Markdown the Easy Way!](https://medium.com/spencerweekly/vs-code-math-to-image-write-latex-math-equations-in-github-markdown-the-easy-way-9fa8b81dc910?source=friends_link&sk=cff035b443fb81f5b20a47370f23aed3)
 
 <h2>Table of Contents</h2>
 

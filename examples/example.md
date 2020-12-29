@@ -49,7 +49,7 @@ Equation:
 \ell = \sum_{i}^{N}(y_i - \hat{y}_i)^2 - ||w||_2^2
 $$ -->
 
-<div align="center"><img src="https://render.githubusercontent.com/render/math?math=%5Cell%20%3D%20%5Csum_%7Bi%7D%5E%7BN%7D(y_i%20-%20%5Chat%7By%7D_i)%5E2%20-%20%7C%7Cw%7C%7C_2%5E2%0D"></div>
+<div align="center"><img style="background: white;" src="https://render.githubusercontent.com/render/math?math=%5Cell%20%3D%20%5Csum_%7Bi%7D%5E%7BN%7D(y_i%20-%20%5Chat%7By%7D_i)%5E2%20-%20%7C%7Cw%7C%7C_2%5E2"></div>
 
 Aligned environment:
 
@@ -60,7 +60,7 @@ Aligned environment:
 \end{aligned}
 $$ -->
 
-<div align="center"><img src="https://render.githubusercontent.com/render/math?math=%5Cbegin%7Baligned%7D%0D%0A%20%20f%20%26%3D%202%20%2B%20x%20%2B%203%20%5C%5C%0D%0A%20%20%20%20%26%3D%205%20%2B%20x%0D%0A%5Cend%7Baligned%7D%0D"></div>
+<div align="center"><img style="background: white;" src="https://render.githubusercontent.com/render/math?math=%5Cbegin%7Baligned%7D%0A%20%20f%20%26%3D%202%20%2B%20x%20%2B%203%20%5C%5C%0A%20%20%20%20%26%3D%205%20%2B%20x%0A%5Cend%7Baligned%7D"></div>
 
 ### Inline equation
 
@@ -80,7 +80,7 @@ Equation:
 \ell = \sum_{i}^{N}(y_i - \hat{y}_i)^2 - ||w||_2^2
 $$ -->
 
-<div align="center"><img src="svg/qRtSFhgpa0.svg"/></div>
+<div align="center"><img style="background: white;" src="svg/tbOH9fuFKM.svg"></div>
 
 Aligned environment:
 
@@ -91,8 +91,8 @@ Aligned environment:
 \end{aligned}
 $$ -->
 
-<div align="center"><img src="svg/AsAHT5xtAG.svg"/></div>
+<div align="center"><img style="background: white;" src="svg/zRKV2EFdAA.svg"></div>
 
 ### Inline equation
 
-In physics, the mass-energy equivalence is stated by the equation ![$E=mc^2$](svg/PCHHCzxOYS.svg), discovered in 1905 by Albert Einstein.
+In physics, the mass-energy equivalence is stated by the equation <!-- $E=mc^2$ --> <img style="transform: translateY(0.1em); background: white;" src="svg/9GYiSwRTee.svg">, discovered in 1905 by Albert Einstein.

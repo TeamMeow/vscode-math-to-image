@@ -71,6 +71,17 @@ function randomFilename(len: number, ext: string) {
   return `${sequence.join('')}.${ext}`
 }
 
+function generateEquationHtml(src: string, mathType: MathType) {
+  const inlineStyle = vscode.workspace.getConfiguration().get("vscode-math-to-image.inlineSvgStyle")
+  const displayStyle = vscode.workspace.getConfiguration().get("vscode-math-to-image.displaySvgStyle")
+
+  if (mathType === MathType.DISPLAY) {
+    return `\n\n<div align="center"><img style="${displayStyle}" src="${src}"></div>`
+  } else {
+    return `<img style="${inlineStyle}" src="${src}">`
+  }
+}
+
 /**
  * Encode URL and return rendered <img> tag based on selected equation
  *
@@ -88,11 +99,7 @@ function renderEquationRemote(equation: string, mathType: MathType) {
   }
 
   const encodedMath = encodeURIComponent(equation)
-  if (mathType === MathType.DISPLAY) {
-    return `\n\n<div align="center"><img src="${renderAPIUrl}${encodedMath}"></div>`
-  } else {
-    return `<img src="${renderAPIUrl}${encodedMath}">`
-  }
+  return generateEquationHtml(`${renderAPIUrl}${encodedMath}`, mathType)
 }
 
 /**
@@ -122,12 +129,7 @@ function renderEquationLocal(equation: string, mathType: MathType) {
       vscode.window.showErrorMessage(`[err]: ${err}`)
     })
 
-  if (mathType === MathType.INLINE) {
-    // return `<img style="transform: translateY(0.1em);" src="${relativePath}"/>`
-    return relativeSvgPath
-  } else {
-    return `\n\n<div align="center"><img src="${relativeSvgPath}"/></div>`
-  }
+  return generateEquationHtml(relativeSvgPath, mathType)
 }
 
 /**
@@ -139,13 +141,8 @@ function renderEquationLocal(equation: string, mathType: MathType) {
  */
 function insertMathImage(renderedImage: string, start: vscode.Position, end: vscode.Position, mathType: MathType) {
   editor?.edit(editBuilder => {
-    if (mathType === MathType.DISPLAY) {
-      editBuilder.insert(start, '<!-- ')
-      editBuilder.insert(end, ` --> ${renderedImage}`)
-    } else {
-      editBuilder.insert(start, '![')
-      editBuilder.insert(end, `](${renderedImage})`)
-    }
+    editBuilder.insert(start, '<!-- ')
+    editBuilder.insert(end, ` --> ${renderedImage}`)
   })
   vscode.window.showInformationMessage(`Render equation successfully!`)
 }

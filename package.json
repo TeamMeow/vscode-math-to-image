@@ -80,6 +80,16 @@
             "Equations will be rendered with GitHub's rendering engine remotely.",
             "Equations will be rendered with CodeCogs' rendering engine remotely."
           ]
+        },
+        "vscode-math-to-image.inlineSvgStyle": {
+          "type": "string",
+          "default": "transform: translateY(0.1em); background: white;",
+          "description": "Optional style for rendered inline SVG equations."
+        },
+        "vscode-math-to-image.displaySvgStyle": {
+          "type": "string",
+          "default": "background: white;",
+          "description": "Optional style for rendered display SVG equations."
         }
       }
     }

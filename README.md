@@ -9,7 +9,7 @@
 [![Azure DevOps builds (branch)](https://img.shields.io/azure-devops/build/MeowTeam/9f842be1-8208-4cb2-ab10-228d34a2c525/1/master?color=578a8a&label=azure%20pipelines&logo=azure-pipelines)](https://dev.azure.com/MeowTeam/vscode-math-to-image/_build/latest?definitionId=1&branchName=master)
 [![Visual Studio Marketplace](https://img.shields.io/visual-studio-marketplace/v/MeowTeam.vscode-math-to-image?color=db8465&label=vs%20marketplace&logo=visual-studio)](https://marketplace.visualstudio.com/items?itemName=MeowTeam.vscode-math-to-image)
 ![Visual Studio Marketplace Downloads](https://img.shields.io/visual-studio-marketplace/d/MeowTeam.vscode-math-to-image?label=downloads&color=82a0ba)
-![Visual Studio Marketplace Rating (Stars)](https://img.shields.io/visual-studio-marketplace/stars/MeowTeam.vscode-math-to-image?color=fab95b)
+![Visual Studio Marketplace Rating (Stars)](https://img.shields.io/visual-studio-marketplace/stars/MeowTeam.vscode-math-to-image?color=e89927)
 
 </div>
 
@@ -54,10 +54,18 @@ $$
 ... to a rendered image tag with the help of GitHub's math rendering server:
 
 ```html
-<div align="center"><img src="https://render.githubusercontent.com/render/math?math=P(x)%20%3D%20%5Cfrac%7B1%7D%7B%5Csigma%5Csqrt%7B2%5Cpi%7D%7D%20e%5E%7B%5Cfrac%7B-(x-%5Cmu)%5E2%7D%7B2%5Csigma%5E2%7D%7D%0D"></div>
+<div align="center"><img style="background: white;" src="https://render.githubusercontent.com/render/math?math=P(x)%20%3D%20%5Cfrac%7B1%7D%7B%5Csigma%5Csqrt%7B2%5Cpi%7D%7D%20e%5E%7B%5Cfrac%7B-(x-%5Cmu)%5E2%7D%7B2%5Csigma%5E2%7D%7D"></div>
 ```
 
-<div align="center"><img src="https://render.githubusercontent.com/render/math?math=%5CLarge%20P(x)%20%3D%20%5Cfrac%7B1%7D%7B%5Csigma%5Csqrt%7B2%5Cpi%7D%7D%20e%5E%7B%5Cfrac%7B-(x-%5Cmu)%5E2%7D%7B2%5Csigma%5E2%7D%7D%0D"></div>
+<div align="center"><img style="background: white;" src="https://render.githubusercontent.com/render/math?math=P(x)%20%3D%20%5Cfrac%7B1%7D%7B%5Csigma%5Csqrt%7B2%5Cpi%7D%7D%20e%5E%7B%5Cfrac%7B-(x-%5Cmu)%5E2%7D%7B2%5Csigma%5E2%7D%7D"></div>
+
+In addition to GitHub's rendering server, we also newly added support for CodeCogs' rendering server:
+
+```html
+<div align="center"><img style="background: white;" src="https://latex.codecogs.com/svg.latex?P(x)%20%3D%20%5Cfrac%7B1%7D%7B%5Csigma%5Csqrt%7B2%5Cpi%7D%7D%20e%5E%7B%5Cfrac%7B-(x-%5Cmu)%5E2%7D%7B2%5Csigma%5E2%7D%7D"></div>
+```
+
+<div align="center"><img style="background: white;" src="https://latex.codecogs.com/svg.latex?P(x)%20%3D%20%5Cfrac%7B1%7D%7B%5Csigma%5Csqrt%7B2%5Cpi%7D%7D%20e%5E%7B%5Cfrac%7B-(x-%5Cmu)%5E2%7D%7B2%5Csigma%5E2%7D%7D"></div>
 
 ### Rendering locally
 
@@ -86,6 +94,11 @@ You can specify the path to save the locally rendered SVG image. The settings ar
 * **vscode-math-to-image.svgSavePath**:
   * `Current file directory`: Generated SVG files will be put in a folder under current file's directory.
   * `Current workspace directory`: Generated SVG files will be put in a folder under current workspace directory.
+* **vscode-math-to-image.remoteRenderEngine**:
+  * `GitHub`: Equations will be rendered with GitHub's rendering engine remotely.
+  * `CodeCogs`: Equations will be rendered with CodeCogs' rendering engine remotely.
+* **vscode-math-to-image.inlineSvgStyle**: Optional style for rendered inline SVG equations. Defaults to `transform: translateY(0.1em); background: white;`.
+* **vscode-math-to-image.displaySvgStyle**: Optional style for rendered display SVG equations. Defaults to `background: white;`.
 
 ## Change Log
 

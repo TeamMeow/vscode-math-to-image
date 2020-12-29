@@ -64,7 +64,7 @@ $$ -->
 
 ### Inline equation
 
-In physics, the mass-energy equivalence is stated by the equation <!-- $E=mc^2$ --> <img src="https://render.githubusercontent.com/render/math?math=E%3Dmc%5E2">, discovered in 1905 by Albert Einstein.
+In physics, the mass-energy equivalence is stated by the equation <!-- $E=mc^2$ --> <img style="background: white;" src="https://render.githubusercontent.com/render/math?math=E%3Dmc%5E2">, discovered in 1905 by Albert Einstein.
 
 ## Local SVG
 

@@ -12,6 +12,3 @@ examples/**
 .gitignore
 vsc-extension-quickstart.md
 azure-pipelines.yml
-CHANGELOG.md
-LICENSE
-README.md

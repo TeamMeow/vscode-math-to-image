@@ -25,14 +25,14 @@
     "url": "https://github.com/TeamMeow/vscode-math-to-image"
   },
   "activationEvents": [
-    "onCommand:vscode-math-to-image.render-selection",
+    "onCommand:vscode-math-to-image.render-selection-remote",
     "onCommand:vscode-math-to-image.render-selection-local"
   ],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "vscode-math-to-image.render-selection",
+        "command": "vscode-math-to-image.render-selection-remote",
         "title": "Math » Image: Insert rendered equation (remote)"
       },
       {
@@ -43,7 +43,7 @@
     "menus": {
       "editor/context": [
         {
-          "command": "vscode-math-to-image.render-selection",
+          "command": "vscode-math-to-image.render-selection-remote",
           "when": "resourceLangId == markdown && editorFocus && editorHasSelection",
           "group": "modification"
         },

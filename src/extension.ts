@@ -105,7 +105,7 @@ function renderEquationLocal(equation: string, mathType: MathType) {
   const filename = randomFilename(10, 'svg')
   const svgPath = getSVGPath(filename)
   const documentPath: string = editor?.document.uri.fsPath!
-  const relativePath = path.relative(path.dirname(documentPath), svgPath)
+  const relativeSvgPath = path.relative(path.dirname(documentPath), svgPath)
 
   require('mathjax')
     .init({
@@ -123,9 +123,10 @@ function renderEquationLocal(equation: string, mathType: MathType) {
     })
 
   if (mathType === MathType.INLINE) {
-    return `<img style="transform: translateY(0.1em);" src="${relativePath}"/>`
+    // return `<img style="transform: translateY(0.1em);" src="${relativePath}"/>`
+    return relativeSvgPath
   } else {
-    return `\n\n<div align="center"><img src="${relativePath}"/></div>`
+    return `\n\n<div align="center"><img src="${relativeSvgPath}"/></div>`
   }
 }
 
@@ -136,10 +137,15 @@ function renderEquationLocal(equation: string, mathType: MathType) {
  * @param start Selection start
  * @param end Selection end
  */
-function insertMathImage(renderedImage: string, start: vscode.Position, end: vscode.Position) {
+function insertMathImage(renderedImage: string, start: vscode.Position, end: vscode.Position, mathType: MathType) {
   editor?.edit(editBuilder => {
-    editBuilder.insert(start, '<!-- ')
-    editBuilder.insert(end, ` --> ${renderedImage}`)
+    if (mathType === MathType.DISPLAY) {
+      editBuilder.insert(start, '<!-- ')
+      editBuilder.insert(end, ` --> ${renderedImage}`)
+    } else {
+      editBuilder.insert(start, '![')
+      editBuilder.insert(end, `](${renderedImage})`)
+    }
   })
   vscode.window.showInformationMessage(`Render equation successfully!`)
 }
@@ -165,20 +171,20 @@ function renderEntry(renderType: RenderType) {
       // Remove leading $$ and trailing $$
       const equation = selection.split('\n').slice(1, -1).join('\n')
 
-      let renderedImage =
+      const renderedImage =
         renderType === RenderType.REMOTE
           ? renderEquationRemote(equation, MathType.DISPLAY)
           : renderEquationLocal(equation, MathType.DISPLAY)
-      insertMathImage(renderedImage, selectionStart, selectionEnd)
+      insertMathImage(renderedImage, selectionStart, selectionEnd, MathType.DISPLAY)
     } else if (inlineMath.test(selection)) {
       // Remove leading $ and trailing $
       const equation = selection.slice(1, -1).trim()
 
-      let renderedImage =
+      const renderedImage =
         renderType === RenderType.REMOTE
           ? renderEquationRemote(equation, MathType.INLINE)
           : renderEquationLocal(equation, MathType.INLINE)
-      insertMathImage(renderedImage, selectionStart, selectionEnd)
+      insertMathImage(renderedImage, selectionStart, selectionEnd, MathType.INLINE)
     } else {
       vscode.window.showErrorMessage('Not a valid equation, include leading and trailing dollar signs: $ as well.')
     }
@@ -186,15 +192,15 @@ function renderEntry(renderType: RenderType) {
 }
 
 export function activate(context: vscode.ExtensionContext) {
-  let renderSelection = vscode.commands.registerCommand('vscode-math-to-image.render-selection', () => {
+  const renderSelectionRemote = vscode.commands.registerCommand('vscode-math-to-image.render-selection-remote', () => {
     renderEntry(RenderType.REMOTE)
   })
 
-  let renderSelectionLocal = vscode.commands.registerCommand('vscode-math-to-image.render-selection-local', () => {
+  const renderSelectionLocal = vscode.commands.registerCommand('vscode-math-to-image.render-selection-local', () => {
     renderEntry(RenderType.LOCAL)
   })
 
-  context.subscriptions.push(renderSelection)
+  context.subscriptions.push(renderSelectionRemote)
   context.subscriptions.push(renderSelectionLocal)
 }
 

@@ -3,7 +3,7 @@
   "displayName": "Math to Image",
   "description": "📐 Render LaTeX math equations in any Markdown file",
   "license": "MIT",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "publisher": "MeowTeam",
   "engines": {
     "vscode": "^1.47.0"
@@ -73,13 +73,13 @@
     }
   },
   "scripts": {
-    "vscode:prepublish": "yarn run compile",
+    "vscode:prepublish": "npm run compile",
     "compile": "tsc -p ./",
     "lint": "eslint src --ext ts",
     "watch": "tsc -watch -p ./",
-    "pretest": "yarn run compile && yarn run lint",
+    "pretest": "npm run compile && npm run lint",
     "test": "node ./out/test/runTest.js",
-    "deploy": "vsce publish --yarn"
+    "deploy": "vsce publish"
   },
   "devDependencies": {
     "@types/glob": "^7.1.1",
@@ -96,6 +96,7 @@
     "vscode-test": "^1.3.0"
   },
   "dependencies": {
-    "mathjax-node": "^2.1.1"
+    "mathjax": "^3.1.2",
+    "mathjax-full": "^3.1.2"
   }
 }

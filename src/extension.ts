@@ -2,13 +2,6 @@ import * as vscode from 'vscode'
 import * as fs from 'fs'
 import * as path from 'path'
 
-//! Can't find TypeScript types definition for mathjax-node
-const mjAPI = require('mathjax-node')
-
-const digits = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')
-const digits_len = digits.length
-
-// VS Code active editor for current session
 let editor = vscode.window.activeTextEditor
 
 enum RenderType {
@@ -23,15 +16,15 @@ enum MathType {
 /**
  * Get absolute SVG file path to write
  *
- * @param fileName name of SVG file
+ * @param fileName Name of SVG file
  */
 function getSVGPath(fileName: string) {
-  let p = vscode.workspace.getConfiguration().get('vscode-math-to-image.svgSavePath')
+  const svgSavePathConf = vscode.workspace.getConfiguration().get('vscode-math-to-image.svgSavePath')
+  const currentPath: string = editor?.document.uri.fsPath!
   let folderPath = ''
-  let current: any = editor?.document.uri.fsPath
 
-  if (p === 'Current file directory') {
-    folderPath = path.dirname(current)
+  if (svgSavePathConf === 'Current file directory') {
+    folderPath = path.dirname(currentPath)
   } else {
     folderPath = vscode.workspace.workspaceFolders ? vscode.workspace.workspaceFolders[0].uri.fsPath : ''
   }
@@ -42,35 +35,47 @@ function getSVGPath(fileName: string) {
 /**
  * Write rendered SVG content to local SVG file
  *
- * @param filePath path to write generated SVG file
+ * @param filePath Path to write generated SVG file
  * @param fileContent SVG content to write to file
  */
 function writeSVGFile(filePath: string, fileContent: string) {
-  if (!fs.existsSync(path.dirname(filePath))) {
-    fs.mkdir(path.dirname(filePath), { recursive: true }, (err: any) => {
+  const dirPath = path.dirname(filePath)
+  if (!fs.existsSync(dirPath)) {
+    fs.mkdir(dirPath, { recursive: true }, (err: any) => {
       if (err) {
-        console.log('[err] system error: create svg folder failed')
-      } else {
-        fs.writeFile(filePath, fileContent, (err: any) => {
-          if (err) {
-            console.log('[err] system error: create svg file failed')
-          }
-        })
-      }
-    })
-  } else {
-    fs.writeFile(filePath, fileContent, (err: any) => {
-      if (err) {
-        console.log('[err] system error: create svg file failed2')
+        vscode.window.showErrorMessage(`Failed to create SVG folder at ${dirPath}.`)
+        return
       }
     })
   }
+  fs.writeFile(filePath, fileContent, (err: any) => {
+    if (err) {
+      vscode.window.showErrorMessage(`Failed to create SVG file at ${filePath}.`)
+    }
+  })
+}
+
+/**
+ * Generate a random filename
+ *
+ * @param len Length of the generated filename
+ * @param ext Intended file extension
+ */
+function randomFilename(len: number, ext: string) {
+  const digits = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')
+
+  // Create an array with length len and fill with random digits
+  const sequence = [...Array(len)].map(_ => {
+    return digits[Math.floor(Math.random() * digits.length)]
+  })
+  return `${sequence.join('')}.${ext}`
 }
 
 /**
  * Encode URL and return rendered <img> tag based on selected equation
  *
- * @param equation selected inline or multiline equation
+ * @param equation Selected inline or display equation
+ * @param mathType Equation type (inline / display)
  */
 function renderEquationRemote(equation: string, mathType: MathType) {
   const renderAPIUrl = 'https://render.githubusercontent.com/render/math?math='
@@ -86,76 +91,56 @@ function renderEquationRemote(equation: string, mathType: MathType) {
 /**
  * Render equation with MathJax to SVG and source from local file
  *
- * @param equation selected inline or multiline equation
- * @param mathType equation type (inline / multiline)
+ * @param equation Selected inline or display equation
+ * @param mathType Equation type (inline / display)
  */
 function renderEquationLocal(equation: string, mathType: MathType) {
-  const mathToSVG = function (equation: string, format: string) {
-    return new Promise((resolve, reject) =>
-      mjAPI.typeset(
-        {
-          math: equation,
-          format: format, // or "inline-TeX", "MathML"
-          svg: true, // or svg:true, or html:true
-        },
-        function (data: any) {
-          if (data.errors) {
-            reject(data.errors)
-          } else {
-            resolve(data.svg.replace(/\n/g, ''))
-          }
-        }
-      )
-    )
-  }
+  const filename = randomFilename(10, 'svg')
+  const svgPath = getSVGPath(filename)
+  const documentPath: string = editor?.document.uri.fsPath!
+  const relativePath = path.relative(path.dirname(documentPath), svgPath)
 
-  let fname =
-    (function (n: number): string {
-      let a = []
-      for (let i = 0; i < n; i++) {
-        a.push(digits[Math.floor(Math.random() * digits_len)])
-      }
-      return a.join('')
-    })(10) + '.svg'
-  let svgPath = getSVGPath(fname)
-  let docPath: any = editor?.document.uri.fsPath
-  let rp = path.relative(path.dirname(docPath), svgPath)
-
-  mathToSVG(equation, mathType === MathType.DISPLAY ? 'TeX' : 'inline-TeX')
-    .then((res: any) => {
-      writeSVGFile(svgPath, res)
+  require('mathjax')
+    .init({
+      loader: { load: ['input/tex', 'output/svg'] },
     })
-    .catch((err: any) => {
-      vscode.window.showErrorMessage('[err]: ' + err)
+    .then((MathJax: any) => {
+      const renderedNode = MathJax.tex2svg(equation, {
+        display: mathType === MathType.DISPLAY,
+      })
+      const renderedSvg = MathJax.startup.adaptor.innerHTML(renderedNode)
+      writeSVGFile(svgPath, renderedSvg)
+    })
+    .catch((err: string) => {
+      vscode.window.showErrorMessage(`[err]: ${err}`)
     })
 
   if (mathType === MathType.INLINE) {
-    return `<img style="transform: translateY(0.25em);" src="${rp}"/>`
+    return `<img style="transform: translateY(0.1em);" src="${relativePath}"/>`
   } else {
-    return `\n\n<div align="center"><img src="${rp}"/></div>`
+    return `\n\n<div align="center"><img src="${relativePath}"/></div>`
   }
 }
 
 /**
  * Insert rendered image string into current VS Code editor
  *
- * @param renderedImage rendered image string (remote or local image)
- * @param start selection start
- * @param end selection end
+ * @param renderedImage Rendered image string (remote or local image)
+ * @param start Selection start
+ * @param end Selection end
  */
 function insertMathImage(renderedImage: string, start: vscode.Position, end: vscode.Position) {
-  // console.log(renderedImage, start, end)
   editor?.edit(editBuilder => {
     editBuilder.insert(start, '<!-- ')
     editBuilder.insert(end, ` --> ${renderedImage}`)
   })
-  vscode.window.showInformationMessage(`📐 Render equation successfully!`)
+  vscode.window.showInformationMessage(`Render equation successfully!`)
 }
 
 /**
  * Render function to insert image form of the selected equation into current editor
  *
- * @param renderType type of equation to render (inline or multiline)
+ * @param renderType Type of equation to render (inline or multiline)
  */
 function renderEntry(renderType: RenderType) {
   editor = vscode.window.activeTextEditor
@@ -167,9 +152,8 @@ function renderEntry(renderType: RenderType) {
   const displayMath = /^\$\$[\s\S]*[\S]+[\s\S]*\$\$$/
 
   if (selection === undefined || selectionStart === undefined || selectionEnd === undefined) {
-    vscode.window.showErrorMessage('❗ Nothing selected!')
+    vscode.window.showErrorMessage('Nothing selected!')
   } else {
-    // console.log(selection)
     if (displayMath.test(selection)) {
       // Remove leading $$ and trailing $$
       const equation = selection.split('\n').slice(1, -1).join('\n')
@@ -189,7 +173,7 @@ function renderEntry(renderType: RenderType) {
           : renderEquationLocal(equation, MathType.INLINE)
       insertMathImage(renderedImage, selectionStart, selectionEnd)
     } else {
-      vscode.window.showErrorMessage('❗ Not a valid equation, include leading and trailing dollar signs: $ as well.')
+      vscode.window.showErrorMessage('Not a valid equation, include leading and trailing dollar signs: $ as well.')
     }
   }
 }

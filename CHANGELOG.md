@@ -2,7 +2,7 @@
 
 All notable changes to the "vscode-math-to-image" extension will be documented in this file.
 
-## Release `v0.1.0`
+## Release `v0.1.1`
 
 * Locally rendered equations are now using the new MathJax 3.0 engine.
 * Implemented optional styles for locally and remotely rendered SVGs.

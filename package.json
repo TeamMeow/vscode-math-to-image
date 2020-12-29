@@ -68,6 +68,18 @@
             "Generated SVG files will be put in a folder under current file's directory.",
             "Generated SVG files will be put in a folder under current workspace directory."
           ]
+        },
+        "vscode-math-to-image.remoteRenderEngine": {
+          "type": "string",
+          "default": "GitHub",
+          "enum": [
+            "GitHub",
+            "CodeCogs"
+          ],
+          "enumDescriptions": [
+            "Equations will be rendered with GitHub's rendering engine remotely.",
+            "Equations will be rendered with CodeCogs' rendering engine remotely."
+          ]
         }
       }
     }

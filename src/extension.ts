@@ -78,9 +78,16 @@ function randomFilename(len: number, ext: string) {
  * @param mathType Equation type (inline / display)
  */
 function renderEquationRemote(equation: string, mathType: MathType) {
-  const renderAPIUrl = 'https://render.githubusercontent.com/render/math?math='
-  const encodedMath = encodeURIComponent(equation)
+  const renderingEngine = vscode.workspace.getConfiguration().get('vscode-math-to-image.remoteRenderEngine')
 
+  let renderAPIUrl = ''
+  if (renderingEngine === 'GitHub') {
+    renderAPIUrl = 'https://render.githubusercontent.com/render/math?math='
+  } else if (renderingEngine === 'CodeCogs') {
+    renderAPIUrl = 'https://latex.codecogs.com/svg.latex?'
+  }
+
+  const encodedMath = encodeURIComponent(equation)
   if (mathType === MathType.DISPLAY) {
     return `\n\n<div align="center"><img src="${renderAPIUrl}${encodedMath}"></div>`
   } else {

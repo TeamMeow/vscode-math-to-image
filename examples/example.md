@@ -79,7 +79,8 @@ Equation:
 <!-- $$
 \ell = \sum_{i}^{N}(y_i - \hat{y}_i)^2 - ||w||_2^2
 $$ -->
-<div align="center"><img src="svg\XVkMmUd615.svg"/></div>
+
+<div align="center"><img src="svg/qRtSFhgpa0.svg"/></div>
 
 Aligned environment:
 
@@ -89,8 +90,9 @@ Aligned environment:
     &= 5 + x
 \end{aligned}
 $$ -->
-<div align="center"><img src="svg\E5IItKa473.svg"/></div>
+
+<div align="center"><img src="svg/AsAHT5xtAG.svg"/></div>
 
 ### Inline equation
 
-In physics, the mass-energy equivalence is stated by the equation <!-- $E=mc^2$ --> <img style="transform: translateY(0.25em);" src="svg\FPTqIMHqAZ.svg"/>, discovered in 1905 by Albert Einstein.
+In physics, the mass-energy equivalence is stated by the equation ![$E=mc^2$](svg/PCHHCzxOYS.svg), discovered in 1905 by Albert Einstein.

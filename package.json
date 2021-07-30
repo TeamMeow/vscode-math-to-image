@@ -81,15 +81,27 @@
             "Equations will be rendered with CodeCogs' rendering engine remotely."
           ]
         },
+        "vscode-math-to-image.insertType": {
+          "type": "string",
+          "default": "HTML",
+          "enum": [
+            "HTML",
+            "Markdown"
+          ],
+          "enumDescriptions": [
+            "Equations will be inserted as HTML.",
+            "Equations will be inserted as Markdown. Note that this doesn't support styles!"
+          ]
+        },
         "vscode-math-to-image.inlineSvgStyle": {
           "type": "string",
           "default": "transform: translateY(0.1em); background: white;",
-          "description": "Optional style for rendered inline SVG equations."
+          "description": "Optional style for rendered inline SVG equations. (Only supported when inserting as HTML)"
         },
         "vscode-math-to-image.displaySvgStyle": {
           "type": "string",
           "default": "background: white;",
-          "description": "Optional style for rendered display SVG equations."
+          "description": "Optional style for rendered display SVG equations. (Only supported when inserting as HTML)"
         }
       }
     }

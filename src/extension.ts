@@ -140,8 +140,8 @@ function renderEquationLocal(equation: string, mathType: MathType) {
  * @param end Selection end
  */
 function insertMathImage(renderedImagePath: string, start: vscode.Position, end: vscode.Position, mathType: MathType) {
-  const insertType = vscode.workspace.getConfiguration().get("vscode-math-to-image.insertType")
-  if(insertType === 'HTML')
+  const insertionType = vscode.workspace.getConfiguration().get("vscode-math-to-image.insertionType")
+  if(insertionType === 'HTML')
   {
     const renderedImageCode = generateEquationHtml(renderedImagePath, mathType)
     editor?.edit(editBuilder => {
@@ -149,7 +149,7 @@ function insertMathImage(renderedImagePath: string, start: vscode.Position, end:
       editBuilder.insert(end, ` --> ${renderedImageCode}`)
     })
   }
-  else if(insertType === 'Markdown')
+  else if(insertionType === 'Markdown')
   {
     editor?.edit(editBuilder => {
       if(mathType === MathType.DISPLAY)

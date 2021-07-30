@@ -81,7 +81,7 @@
             "Equations will be rendered with CodeCogs' rendering engine remotely."
           ]
         },
-        "vscode-math-to-image.insertType": {
+        "vscode-math-to-image.insertionType": {
           "type": "string",
           "default": "HTML",
           "enum": [

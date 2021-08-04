@@ -83,7 +83,7 @@ function generateEquationHtml(src: string, mathType: MathType) {
 }
 
 /**
- * Encode URL and return rendered <img> tag based on selected equation
+ * Encode URL and return rendered image path based on selected equation
  *
  * @param equation Selected inline or display equation
  * @param mathType Equation type (inline / display)
@@ -99,7 +99,7 @@ function renderEquationRemote(equation: string, mathType: MathType) {
   }
 
   const encodedMath = encodeURIComponent(equation)
-  return generateEquationHtml(`${renderAPIUrl}${encodedMath}`, mathType)
+  return `${renderAPIUrl}${encodedMath}`
 }
 
 /**
@@ -129,21 +129,38 @@ function renderEquationLocal(equation: string, mathType: MathType) {
       vscode.window.showErrorMessage(`[err]: ${err}`)
     })
 
-  return generateEquationHtml(relativeSvgPath, mathType)
+  return relativeSvgPath
 }
 
 /**
- * Insert rendered image string into current VS Code editor
+ * Insert rendered image into current VS Code editor
  *
- * @param renderedImage Rendered image string (remote or local image)
+ * @param renderedImagePath Path to rendered image (remote or local image)
  * @param start Selection start
  * @param end Selection end
  */
-function insertMathImage(renderedImage: string, start: vscode.Position, end: vscode.Position, mathType: MathType) {
-  editor?.edit(editBuilder => {
-    editBuilder.insert(start, '<!-- ')
-    editBuilder.insert(end, ` --> ${renderedImage}`)
-  })
+function insertMathImage(renderedImagePath: string, start: vscode.Position, end: vscode.Position, mathType: MathType) {
+  const insertionType = vscode.workspace.getConfiguration().get("vscode-math-to-image.insertionType")
+  if(insertionType === 'HTML')
+  {
+    const renderedImageCode = generateEquationHtml(renderedImagePath, mathType)
+    editor?.edit(editBuilder => {
+      editBuilder.insert(start, '<!-- ')
+      editBuilder.insert(end, ` --> ${renderedImageCode}`)
+    })
+  }
+  else if(insertionType === 'Markdown')
+  {
+    editor?.edit(editBuilder => {
+      if(mathType === MathType.DISPLAY)
+      {
+        editBuilder.insert(start, '\n\n')
+        start.translate(0,2)
+      }
+      editBuilder.insert(start, '![')
+      editBuilder.insert(end, `](${renderedImagePath})`)
+    })
+  }
   vscode.window.showInformationMessage(`Render equation successfully!`)
 }
 

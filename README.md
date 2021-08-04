@@ -97,8 +97,9 @@ You can specify the path to save the locally rendered SVG image. The settings ar
 * **vscode-math-to-image.remoteRenderEngine**:
   * `GitHub`: Equations will be rendered with GitHub's rendering engine remotely.
   * `CodeCogs`: Equations will be rendered with CodeCogs' rendering engine remotely.
-* **vscode-math-to-image.inlineSvgStyle**: Optional style for rendered inline SVG equations. Defaults to `transform: translateY(0.1em); background: white;`.
-* **vscode-math-to-image.displaySvgStyle**: Optional style for rendered display SVG equations. Defaults to `background: white;`.
+* **vscode-math-to-image.inlineSvgStyle**: Optional style for rendered inline SVG equations. Defaults to `transform: translateY(0.1em); background: white;`. Note: Not supported with Markdown-insertionType.
+* **vscode-math-to-image.displaySvgStyle**: Optional style for rendered display SVG equations. Defaults to `background: white;`. Note: Not supported with Markdown-insertionType.
+* **vscode-math-to-image.insertionType**: Choose whether to insert the rendered equations as HTML (default) or Markdown. Note that Markdown doesn't support styling.
 
 ## Change Log
 

@@ -164,6 +164,12 @@ function insertMathImage(renderedImagePath: string, start: vscode.Position, end:
   vscode.window.showInformationMessage(`Render equation successfully!`)
 }
 
+function setSvgColor(equation: string) {
+  const fontColor = vscode.workspace.getConfiguration().get("vscode-math-to-image.fontColor")
+  const backgroundColor = vscode.workspace.getConfiguration().get("vscode-math-to-image.backgroundColor")
+  return `"\\color{"${fontColor}"}\\bbox["${backgroundColor}"]{"${equation}"}"`
+}
+
 /**
  * Render function to insert image form of the selected equation into current editor
  *
@@ -183,7 +189,7 @@ function renderEntry(renderType: RenderType) {
   } else {
     if (displayMath.test(selection)) {
       // Remove leading $$ and trailing $$
-      const equation = selection.split('\n').slice(1, -1).join('\n')
+      const equation = setSvgColor(selection.split('\n').slice(1, -1).join('\n'))
 
       const renderedImage =
         renderType === RenderType.REMOTE
@@ -192,7 +198,7 @@ function renderEntry(renderType: RenderType) {
       insertMathImage(renderedImage, selectionStart, selectionEnd, MathType.DISPLAY)
     } else if (inlineMath.test(selection)) {
       // Remove leading $ and trailing $
-      const equation = selection.slice(1, -1).trim()
+      const equation = setSvgColor(selection.slice(1, -1).trim())
 
       const renderedImage =
         renderType === RenderType.REMOTE

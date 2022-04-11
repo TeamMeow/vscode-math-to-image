@@ -102,6 +102,16 @@
           "type": "string",
           "default": "background: white;",
           "description": "Optional style for rendered display SVG equations. (Only supported when inserting as HTML)"
+        },
+        "vscode-math-to-image.backgroundColor": {
+          "type": "string",
+          "default": "white",
+          "description": "Optional background color for rendered equations. (Only supported when inserting as HTML)"
+        },
+        "vscode-math-to-image.fontColor": {
+          "type": "string",
+          "default": "black",
+          "description": "Optional font color for rendered equations. (Only supported when inserting as HTML)"
         }
       }
     }

@@ -167,7 +167,7 @@ function insertMathImage(renderedImagePath: string, start: vscode.Position, end:
 function setSvgColor(equation: string) {
   const fontColor = vscode.workspace.getConfiguration().get("vscode-math-to-image.fontColor")
   const backgroundColor = vscode.workspace.getConfiguration().get("vscode-math-to-image.backgroundColor")
-  return `"\\color{"${fontColor}"}\\bbox["${backgroundColor}"]{"${equation}"}"`
+  return `\\color{${fontColor}}\\bbox[${backgroundColor}]{${equation}}`
 }
 
 /**
